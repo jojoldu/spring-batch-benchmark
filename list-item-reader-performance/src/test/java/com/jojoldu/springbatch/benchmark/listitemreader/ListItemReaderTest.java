@@ -3,7 +3,6 @@ package com.jojoldu.springbatch.benchmark.listitemreader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.commons.JUnitException;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.batch.item.support.ListItemReader;
 
@@ -32,6 +31,17 @@ public class ListItemReaderTest {
     void origin_reader_test() throws Exception {
         //given
         ListItemReader<String> reader = new ListItemReader<>(list);
+
+        //when
+        for (int i = 0; i < size; i++) {
+            reader.read();
+        }
+    }
+
+    @Test
+    void linked_reader_test() throws Exception {
+        //given
+        LinkedListItemReader<String> reader = new LinkedListItemReader<>(list);
 
         //when
         for (int i = 0; i < size; i++) {

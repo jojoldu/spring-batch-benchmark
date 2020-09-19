@@ -16,8 +16,6 @@ import java.util.List;
 public class LinkedListItemReader<T> implements ItemReader<T> {
 
     private List<T> list;
-    private int listSize;
-    private int current = 0;
 
     public LinkedListItemReader(List<T> list) {
         // If it is a proxy we assume it knows how to deal with its own state.
@@ -28,8 +26,6 @@ public class LinkedListItemReader<T> implements ItemReader<T> {
         else {
             this.list = new LinkedList<>(list);
         }
-
-        this.listSize = this.list.size();
     }
 
     @Nullable
