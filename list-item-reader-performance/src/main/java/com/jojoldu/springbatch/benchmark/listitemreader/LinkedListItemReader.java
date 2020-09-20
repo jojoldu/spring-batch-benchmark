@@ -13,7 +13,7 @@ import java.util.List;
  * Blog : http://jojoldu.tistory.com
  * Github : http://github.com/jojoldu
  */
-public class LinkedListItemReader<T> implements ItemReader<T> {
+public class LinkedListItemReader<T> extends ListItemReader<T> {
 
     private List<T> list;
 
@@ -27,14 +27,4 @@ public class LinkedListItemReader<T> implements ItemReader<T> {
             this.list = new LinkedList<>(list);
         }
     }
-
-    @Nullable
-    @Override
-    public T read() {
-        if (!list.isEmpty()) {
-            return list.remove(0);
-        }
-        return null;
-    }
-
 }
