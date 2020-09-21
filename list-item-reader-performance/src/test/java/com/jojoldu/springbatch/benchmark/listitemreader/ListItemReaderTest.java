@@ -7,6 +7,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.batch.item.support.ListItemReader;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -31,6 +32,18 @@ public class ListItemReaderTest {
     void origin_reader_test() throws Exception {
         //given
         ListItemReader<String> reader = new ListItemReader<>(list);
+
+        //when
+        for (int i = 0; i < size; i++) {
+            reader.read();
+        }
+    }
+
+    @Test
+    void origin_reader_LinkedList_test() throws Exception {
+        //given
+        List<String> linkedList = new LinkedList<>(list);
+        ListItemReader<String> reader = new ListItemReader<>(linkedList);
 
         //when
         for (int i = 0; i < size; i++) {

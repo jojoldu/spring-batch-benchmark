@@ -4,7 +4,6 @@ import org.springframework.aop.support.AopUtils;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.lang.Nullable;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,7 +12,7 @@ import java.util.List;
  * Blog : http://jojoldu.tistory.com
  * Github : http://github.com/jojoldu
  */
-public class LinkedListItemReader<T> extends ListItemReader<T> {
+public class LinkedListItemReader<T> implements ItemReader<T> {
 
     private List<T> list;
 
@@ -26,5 +25,14 @@ public class LinkedListItemReader<T> extends ListItemReader<T> {
         else {
             this.list = new LinkedList<>(list);
         }
+    }
+
+    @Nullable
+    @Override
+    public T read() {
+        if (!list.isEmpty()) {
+            return list.remove(0);
+        }
+        return null;
     }
 }
