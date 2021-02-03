@@ -1,13 +1,15 @@
 package com.jojoldu.blogcode.hibernatebatchsize;
 
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@EnableBatchProcessing
 @SpringBootApplication
-public class HibernateBatchSizeApplication {
+public class BatchApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HibernateBatchSizeApplication.class, args);
+        SpringApplication.run(BatchApplication.class, args);
     }
 
 }
